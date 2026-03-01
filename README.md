@@ -1,73 +1,69 @@
-# React + TypeScript + Vite
+# UBL Builder Showcase
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a React + TypeScript showcase built to demonstrate how to use the [ubl-builder](https://www.npmjs.com/package/ubl-builder) library in a real frontend app.
 
-Currently, two official plugins are available:
+Live site: https://pipesanta.github.io/ubl-builder-demo/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Purpose
 
-## React Compiler
+The goal of this repository is to provide a simple, practical reference for:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Setting up a Vite + React app with ubl-builder
+- Exploring the library through a dedicated Showcase page
+- Using basic client-side routing for a clean demo flow
+- Publishing the app to GitHub Pages
 
-## Expanding the ESLint configuration
+## Routes
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- `/` → Home page
+- `/showcase` → ubl-builder showcase page
+- `*` → Not Found page
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+The app uses HashRouter to work correctly on GitHub Pages.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Tech Stack
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- React 19
+- TypeScript
+- Vite
+- React Router
+- ubl-builder
+
+## Local Development
+
+Install dependencies:
+
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Run the app:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run dev
 ```
+
+## Production Build
+
+```bash
+npm run build
+```
+
+## Deployment (GitHub Pages)
+
+This repository is configured to publish the `dist` folder using `gh-pages`.
+
+```bash
+npm run deploy
+```
+
+Notes:
+
+- Vite `base` is set to `/ubl-builder-demo/`
+- Router is configured with `HashRouter`
+
+## Project Structure
+
+- `src/pages/HomePage.tsx` → Home screen
+- `src/pages/ShowcasePage.tsx` → ubl-builder showcase
+- `src/pages/NotFoundPage.tsx` → 404 page
